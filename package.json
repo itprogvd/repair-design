@@ -1,0 +1,29 @@
+{
+  "name": "repair-design",
+  "version": "1.0.0",
+  "description": "Site for house repair",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/itprogvd/repair-design.git"
+  },
+  "keywords": [
+    "repair",
+    "house-repair",
+    "design",
+    "repair"
+  ],
+  "author": "Victor Dudash",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/itprogvd/repair-design/issues"
+  },
+  "homepage": "https://github.com/itprogvd/repair-design#readme",
+  "devDependencies": {
+    "browser-sync": "^2.26.7",
+    "gulp": "^4.0.2"
+  }
+}
