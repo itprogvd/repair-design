@@ -1,24 +1,36 @@
-const gulp = require('gulp');
+const {
+  src,
+  dest,
+  watch
+} = require('gulp');
 const browserSync = require('browser-sync').create();
 const cleanCSS = require('gulp-clean-css');
 const rename = require('gulp-rename');
+const sass = require('gulp-sass');
 
-exports.default = function () {
-  return gulp.src('src/*.css')
+function bs() {
+  serveSassAndCompile();
+  browserSync.init({
+    server: {
+      baseDir: "./src"
+    }
+  });
+  watch("src/*.html").on('change', browserSync.reload);
+  watch("src/sass/*.sass").on('change', serveSassAndCompile);
+  watch("src/js/*.js").on('change', browserSync.reload);
+}
+
+function serveSassAndCompile() {
+  return src('src/sass/*.sass')
+    .pipe(sass())
     .pipe(cleanCSS({
       compatibility: 'ie8'
     }))
     .pipe(rename({
       extname: '.min.css'
     }))
-    .pipe(gulp.dest('dist/'));
-};
+    .pipe(dest('src/css'))
+    .pipe(browserSync.stream());
+}
 
-gulp.task('browser-sync', function () {
-  browserSync.init({
-    server: {
-      baseDir: "./"
-    }
-  });
-  gulp.watch("src/*.html").on('change', browserSync.reload);
-});
+exports.default = bs;
