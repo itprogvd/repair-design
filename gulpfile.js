@@ -16,7 +16,7 @@ function bs() {
     }
   });
   watch("src/*.html").on('change', browserSync.reload);
-  watch("src/sass/*.sass").on('change', serveSassAndCompile);
+  watch("src/sass/**/*.sass").on('change', serveSassAndCompile);
   watch("src/js/*.js").on('change', browserSync.reload);
 }
 
