@@ -18,11 +18,12 @@ function bs() {
   });
   watch("src/*.html").on('change', browserSync.reload);
   watch("src/sass/**/*.sass").on('change', serveSassAndCompile);
+  watch("src/sass/**/*.scss").on('change', serveSassAndCompile);
   watch("src/js/*.js").on('change', browserSync.reload);
 }
 
 function serveSassAndCompile() {
-  return src('src/sass/*.sass')
+  return src('src/sass/**/*.sass', 'src/sass/**/*.scss')
     .pipe(sass())
     .pipe(autoprefixer({
       cascade: false
