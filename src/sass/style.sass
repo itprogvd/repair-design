@@ -1,9 +1,46 @@
-@import '_normalize'
-@import '_variables'
-@import '_interface'
-@import '_grid'
-@import 'templates/_header'
+// variables
+$dark: #131313
+$primary: #E3B873
+$light: #fff
 
+// interface
+.button
+  padding: 13px 20px
+  border: none
+  border-radius: 2px
+  &--primary
+    color: $light
+    background-color: $primary
+
+// grid
+.container
+  max-width: 1256px
+  margin: auto
+
+  // basic
 body
-  font-family: sans-serif
+  font-family: 'Futura Book', sans-serif
   font-size: 14px
+
+// header
+.header
+  background-color: $dark
+  padding: 24px 0
+.menu
+  display: flex
+  justify-content: space-between
+  align-items: center
+.logo
+  color: $primary
+  text-transform: uppercase
+.nav
+  &__item
+    color: $light
+    text-decoration: none
+    text-transform: uppercase
+    margin-right: 40px
+.phone
+  color: $primary
+.contacts
+  &__phone
+    margin-right: 45px

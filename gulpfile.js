@@ -7,6 +7,7 @@ const browserSync = require('browser-sync').create();
 const cleanCSS = require('gulp-clean-css');
 const rename = require('gulp-rename');
 const sass = require('gulp-sass');
+const autoprefixer = require('gulp-autoprefixer');
 
 function bs() {
   serveSassAndCompile();
@@ -23,6 +24,9 @@ function bs() {
 function serveSassAndCompile() {
   return src('src/sass/*.sass')
     .pipe(sass())
+    .pipe(autoprefixer({
+      cascade: false
+    }))
     .pipe(cleanCSS({
       compatibility: 'ie8'
     }))
