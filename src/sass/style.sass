@@ -35,6 +35,23 @@ $light: #fff
 body
   font-family: 'Futura Book', sans-serif
   font-size: 14px
+.section
+  &-title
+    text-align: center
+    text-transform: uppercase
+    font-family: 'Yeseva One', cursive
+    &__heading
+      font-size: 20px
+    &__img
+      display: flex
+      align-items: center
+      justify-content: center
+      &::after, &::before
+        content: ''
+        width: 32px
+        height: 2px
+        background-color: $primary
+        margin: 0 10px
 
 // header
 .header
@@ -81,6 +98,8 @@ body
   &::before
     content: ''
     position: absolute
+    top: 0
+    left: 0
     width: 100%
     height: 100%
     background-color: rgba($dark, 0.7)
@@ -146,3 +165,5 @@ body
   font-size: 40px
   &--primary
     color: $primary
+
+// section "Control"
