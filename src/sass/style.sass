@@ -2,6 +2,7 @@
 $dark: #131313
 $primary: #E3B873
 $light: #fff
+$secondary: #959595
 
 // interface
 .button
@@ -24,6 +25,39 @@ $light: #fff
     border: 1px solid $light
     background-color: transparent
     color: $light
+.label
+  font-size: 1.07rem
+  &--light
+    color: rgba($light, 0.5)
+.input
+  background-color: transparent
+  border: none
+  border-bottom: 1px solid rgba(54, 54, 54, 0.3)
+  font-size: 1.29rem
+  color: $light
+  padding: 0.5rem 0
+  outline: none
+  &::placeholder
+    color: $light
+.policy
+  &__checkbox
+    opacity: 0
+    visibility: hidden
+    &:checked +
+      .policy__label
+        &::before
+          background: $primary url('../img/check.svg') no-repeat center / 0.8rem
+  &__label
+    display: flex
+    align-items: center
+    &::before
+      content: ''
+      width: 18px
+      height: 18px
+      border: 1px solid $primary
+      border-radius: 1px
+      cursor: pointer
+      margin-right: 0.64rem
 
 // grid
 .container
@@ -39,13 +73,17 @@ html
 body
   font-family: 'Futura Book', sans-serif
   font-size: 1rem
+img
+  max-width: 100%
 .section
+  padding: 60px 0
   &-title
     text-align: center
     text-transform: uppercase
     font-family: 'Yeseva One', cursive
     &__heading
       font-size: 20px
+      font-weight: normal
     &__img
       display: flex
       align-items: center
@@ -56,6 +94,14 @@ body
         height: 2px
         background-color: $primary
         margin: 0 10px
+    &__text
+      font-size: 1.1rem
+      line-height: 1.9rem
+      text-align: center
+      font-weight: normal
+      font-family: 'Futura Book', sans-serif
+      max-width: 50rem
+      margin: 1.69rem auto
 
 // header
 .header
@@ -183,6 +229,114 @@ body
 
 // section "Control"
 
+//section "Types"
+.types
+  &__section-title
+    margin-bottom: 2rem
+.row
+  display: flex
+  align-items: flex-start
+  justify-content: space-between
+.col
+  flex-basis: 32%
+.card
+  &__text
+    position: relative
+    max-width: 23.6rem
+    margin: 0 auto
+    margin-top: -9.3rem
+    padding: 1.79rem 2.14rem
+    background-color: $light
+    box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.03)
+  &__title
+    font-family: 'Yeseva One', cursive
+    font-size: 1.29rem
+    color: #363636
+    margin-top: 0
+    margin-bottom: 0.7rem
+  &__list
+    padding: 0 0 0 1.3rem
+    margin: 0
+    margin-bottom: 2.5rem
+  &__item
+    font-size: 1.07rem
+    line-height: 1.79rem
+    color: $secondary
+  &__pricetag
+    position: absolute
+    left: 0
+    bottom: -1.79rem
+    font-size: 1.29rem
+    font-family: 'Yeseva One', cursive
+    text-transform: uppercase
+    background-color: $primary
+    color: $light
+    padding: 1.18rem 2.6rem
+    font-weight: normal
+    font-size: 1.28rem
+    line-height: 1.78rem
+
+//section Design
+.design
+  &-section
+    &-title
+      &__text
+        margin-bottom: 3rem
+  &-card
+    &__pricetag
+      padding-right: 5.5rem
+
+// Modal
+.modal
+  position: fixed
+  z-index: 199
+  left: 0
+  top: 0
+  bottom: 0
+  right: 0
+  width: 100%
+  height: 100%
+  background-color: rgba($dark, 0.6)
+  display: flex
+  align-items: center
+  justify-content: center
+  &__dialog
+    position: relative
+    max-width: 36.35rem
+    background: $dark url('../img/bg-lines.svg') no-repeat
+    center
+    padding: 2.357rem 3.5rem 1.93rem 3.5rem
+    color: $light
+  &__close
+    position: absolute
+    right: 0
+    top: 0
+    width: 28px
+    height: 28px
+    background: transparent url('../img/close.svg') no-repeat center
+    border: none
+    margin: 12px
+    cursor: pointer
+  &__title
+    margin: 0
+    font-family: 'Yeseva One', cursive
+    font-size: 1.35rem
+    line-height: 1.85rem
+    font-weight: normal
+    text-align: center
+    margin-bottom: 2.43rem
+  &__form
+    display: flex
+    flex-direction: column
+  &__input
+    margin-bottom: 3.43rem
+    &:last-of-type
+      margin-bottom: 0
+  &__policy
+    margin-bottom: 2.7rem
+  &__button
+    align-self: flex-end
+    padding: 1.2rem 3.4rem
 // Media queries
 @media screen and ( max-width: 1200px )
   html
@@ -198,6 +352,36 @@ body
       display: none
     &__content
       margin-left: 0
+@media screen and ( max-width: 760px )
+  .row
+    flex-direction: column
+    align-items: center
+  .types
+    &__card
+      margin-bottom: 5rem
+  .card
+    &__text
+      max-width: 19.28rem
+      margin-left: 0
+  .design
+    color: $light
+    background-color: $dark
+    &-section
+      &-title
+        &__text
+          max-width: auto
+          font-size: 0.9rem
+    &__card
+      margin-bottom: 6rem
+    &-card
+      &__item:nth-last-child(-n+5)
+        display: none
+      &__item:nth-child(7):after
+        content: '...'
+        margin-left: 0.4rem
+      &__pricetag
+        padding: 0.7rem 3.42rem
+        box-shadow: 5px 5px 10px rgba(227, 184, 115, 0.3)
 @media screen and ( max-width: 576px )
   .title
     font-size: 1.64rem
@@ -220,6 +404,17 @@ body
       display: block
       min-width: 22.86rem
       margin-bottom: 1.85rem
+  .modal
+    &__dialog
+      padding: 2rem 2.5rem 1.5rem 2.5rem
+      max-width: 25rem
+    &__close
+      margin: 0
+      top: -10px
+      right: -10px
+    &__button
+      align-self: center
+      padding: 1rem 3rem
 @media screen and ( max-height: 520px )
   .hero
     &__scroll-down
