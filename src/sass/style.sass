@@ -288,6 +288,8 @@ img
 
 // Modal
 .modal
+  opacity: 0
+  visibility: hidden
   position: fixed
   z-index: 199
   left: 0
@@ -300,6 +302,9 @@ img
   display: flex
   align-items: center
   justify-content: center
+  &--visible
+    opacity: 1
+    visibility: visible
   &__dialog
     position: relative
     max-width: 36.35rem
@@ -317,6 +322,7 @@ img
     border: none
     margin: 12px
     cursor: pointer
+    outline: none
   &__title
     margin: 0
     font-family: 'Yeseva One', cursive
