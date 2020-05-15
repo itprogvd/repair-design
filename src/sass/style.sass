@@ -81,7 +81,15 @@ $secondary: #959595
   width: 85%
   max-width: 1256px
   margin: auto
-
+.row
+  display: flex
+  align-items: flex-start
+  justify-content: space-between
+.col
+  &-30
+    flex-basis: 30%
+  &-50
+    width: 50%
   // basic
 *, *:before, *:after
   box-sizing: border-box
@@ -94,13 +102,30 @@ img
   max-width: 100%
 .section
   padding: 60px 0
+  &--dark
+    background-color: $dark
+    color: $light
   &-title
     text-align: center
     text-transform: uppercase
     font-family: 'Yeseva One', cursive
+    &--left
+      text-align: left
     &__heading
       font-size: 20px
       font-weight: normal
+      line-height: 138%
+      &--primary
+        color: $primary
+    &__word
+      display: flex
+      align-items: center
+      &::after
+        content: ''
+        width: 90px
+        height: 1px
+        background-color: $primary
+        margin-left: 2rem
     &__img
       display: flex
       align-items: center
@@ -120,6 +145,8 @@ img
       font-family: 'Futura Book', sans-serif
       max-width: 50rem
       margin: 1.69rem auto
+      &--left
+        text-align: left
 
 // header
 .header
@@ -210,7 +237,8 @@ img
     min-width: 17.6rem
     min-height: 6.92rem
     left: 0
-    bottom: 0
+    bottom: -3.46rem
+    z-index: 3
     &:after
       margin-left: 12px
 .instagram
@@ -247,12 +275,6 @@ img
 .types
   &__section-title
     margin-bottom: 2rem
-.row
-  display: flex
-  align-items: flex-start
-  justify-content: space-between
-.col
-  flex-basis: 32%
 .card
   &__text
     position: relative
@@ -300,6 +322,69 @@ img
     &__pricetag
       padding-right: 5.5rem
 
+// projects
+.projects
+  padding-top: 11rem
+  background: $dark url('../img/project-bg.svg') no-repeat center
+  background-size: cover
+  &-section-title
+    &__heading
+      font-size: 1.7rem
+      margin: 0
+      margin-bottom: 2rem
+    &__text
+      font-family: 'Futura Book', sans-serif
+      font-size: 1.2rem
+      line-height: 2rem
+      text-align: left
+      max-width: 31.57rem
+      margin-bottom: 2rem
+      text-transform: none
+  &-swiper
+    &-wrapper
+      padding-bottom: 3.5rem
+  .swiper
+    &-slide
+      display: flex
+      flex-wrap: wrap
+      &__text
+        flex-basis: 36%
+        margin-bottom: 2.42rem
+        padding-bottom: 0
+      &__heading
+        font-size: 1.29rem
+        line-height: 1.78rem
+        color: $primary
+        font-family: 'Yeseva One', cursive
+        font-weight: normal
+        text-transform: uppercase
+        margin-bottom: 0.64rem
+      &__value
+        font-weight: normal
+        font-size: 1.07rem
+        line-height: 1.42rem
+    &-pagination
+      &-bullets
+        width: auto
+        bottom: 0
+      &-bullet
+        background-color: rgba($light, 0.3)
+        &-active
+          background-color: $light
+    &-button
+      &-prev, &-next
+        bottom: 0
+        top: auto
+        background-size: 42px
+        width: 42px
+        height: 14px
+        &::after
+          display: none
+      &-prev
+        left: 0
+        background: url('../img/arrow-prev.svg') no-repeat center
+      &-next
+        background: url('../img/arrow-next.svg') no-repeat center
 // Modal
 .modal
   opacity: 0
@@ -372,10 +457,28 @@ img
       display: none
     &__content
       margin-left: 0
+  .projects
+    .row
+      display: flex
+      flex-wrap: wrap
+      .col-50
+        flex-basis: 100%
+    .swiper
+      &-slide
+        &__text
+          flex-basis: 50%
+    &-swiper-img
+      margin-top: 3rem
+
 @media screen and ( max-width: 760px )
   .row
     flex-direction: column
     align-items: center
+  .section
+    &-title
+      &__word
+        &::after
+          display: none
   .types
     &__card
       margin-bottom: 5rem
@@ -402,6 +505,9 @@ img
       &__pricetag
         padding: 0.7rem 3.42rem
         box-shadow: 5px 5px 10px rgba(227, 184, 115, 0.3)
+  .projects
+    .row
+      flex-direction: row
 @media screen and ( max-width: 576px )
   .title
     font-size: 1.64rem
@@ -435,6 +541,14 @@ img
     &__button
       align-self: center
       padding: 1rem 3rem
+  .projects
+    padding-top: 3rem
+    background-image: none
+    background-color: $dark
+    .swiper
+      &-slide
+        &__heading
+          font-size: 1.1rem
 @media screen and ( max-height: 520px )
   .hero
     &__scroll-down
