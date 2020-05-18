@@ -29,6 +29,8 @@ $secondary: #959595
   font-size: 1.07rem
   &--light
     color: rgba($light, 0.5)
+  &--secondary
+    color: rgba(54, 54, 54, 0.5)
 .input
   background-color: transparent
   border: none
@@ -37,8 +39,13 @@ $secondary: #959595
   color: $light
   padding: 0.5rem 0
   outline: none
-  &::placeholder
-    color: $light
+  &--light
+    &::placeholder
+      color: $light
+  &--dark
+    color: #363636
+    &::placeholder
+      color: #363636
 .scroll
   position: absolute
   display: flex
@@ -111,6 +118,8 @@ img
     font-family: 'Yeseva One', cursive
     &--left
       text-align: left
+    &--light
+      color: $light
     &__heading
       font-size: 20px
       font-weight: normal
@@ -270,7 +279,67 @@ img
     color: $primary
 
 // section "Control"
-
+.control
+  margin-top: -27rem
+  padding-bottom: 10.14rem
+  &__section-title
+    margin-bottom: 2.2rem
+  &__video
+    position: relative
+    display: flex
+    margin: auto
+    margin-bottom: 4.428rem
+    max-width: 58.35rem
+    min-height: 31rem
+    background: $dark url('../img/video-mask.jpg') no-repeat center
+    background-size: cover
+    box-shadow: 0px 20px 50px rgba(0, 0, 0, 0.15)
+    &::before
+      content: ''
+      position: absolute
+      width: 100%
+      height: 100%
+      background-color: rgba(black, 0.8)
+  &__text
+    max-width: 40.5rem
+    margin: auto
+    margin-bottom: 4.28rem
+    font-size: 1.428rem
+    line-height: 2.4rem
+    color: #363636
+    text-align: center
+    &::before
+      content: ''
+      display: block
+      margin: auto
+      margin-bottom: 2.5rem
+      width: 55px
+      height: 2px
+      background-color: $primary
+      border-radius: 30px
+  &__form
+    display: flex
+    flex-wrap: wrap
+    justify-content: space-between
+    max-width: 55rem
+    margin: auto
+  &__input-group
+    display: flex
+    flex-direction: column
+    flex-basis: 30%
+  &__policy
+    flex-basis: 100%
+    margin-top: 1rem
+    &__label
+      justify-content: center
+  &__label
+    margin-bottom: -7px
+  &__button
+    padding: 1.28rem 4.79rem
+.video
+  &__play
+    position: relative
+    margin: auto
 //section "Types"
 .types
   &__section-title
@@ -325,6 +394,7 @@ img
 // projects
 .projects
   padding-top: 11rem
+  padding-bottom: 30rem
   background: $dark url('../img/project-bg.svg') no-repeat center
   background-size: cover
   &-section-title
@@ -443,7 +513,7 @@ img
     align-self: flex-end
     padding: 1.2rem 3.4rem
 // Media queries
-@media screen and ( max-width: 1200px )
+@media screen and ( max-width: 1270px )
   html
     font-size: 12px
   .nav
@@ -530,6 +600,44 @@ img
       display: block
       min-width: 22.86rem
       margin-bottom: 1.85rem
+  .control
+    background-color: $dark
+    color: $light
+    margin-top: -30rem
+    padding-bottom: 0rem
+    &__video
+      min-height: 17rem
+      background-size: contain
+      &::before
+        background-color: rgba($dark, 0.8)
+    &__text
+      color: $light
+      font-size: 1.2rem
+      &::before
+        display: none
+    &__button
+      width: 100%
+      order: 3
+      margin-bottom: -2rem
+    &__policy
+      margin-bottom: 3rem
+      margin-top: 0
+      &__label
+        justify-content: flex-start
+    &__input
+      flex-basis: 100%
+      color: $light
+      &-group
+        flex-basis: 100%
+        margin-bottom: 2.5rem
+      &::placeholder
+        color: $light
+    &__label
+      color: rgba($light, 0.5)
+  .video
+    &__play
+      width: 20%
+      height: 20%
   .modal
     &__dialog
       padding: 2rem 2.5rem 1.5rem 2.5rem
@@ -549,6 +657,11 @@ img
       &-slide
         &__heading
           font-size: 1.1rem
+@media screen and ( max-width: 320px )
+  .control
+    &__video
+      min-height: 12rem
+
 @media screen and ( max-height: 520px )
   .hero
     &__scroll-down
