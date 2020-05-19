@@ -3,6 +3,7 @@ $dark: #131313
 $primary: #E3B873
 $light: #fff
 $secondary: #959595
+$black: #181818
 
 // interface
 .button
@@ -39,6 +40,10 @@ $secondary: #959595
   color: $light
   padding: 0.5rem 0
   outline: none
+  &-group
+    display: flex
+    flex-direction: column
+    flex-basis: 30%
   &--light
     &::placeholder
       color: $light
@@ -67,13 +72,13 @@ $secondary: #959595
   &__checkbox
     opacity: 0
     visibility: hidden
-    &:checked +
-      .policy__label
-        &::before
-          background: $primary url('../img/check.svg') no-repeat center / 0.8rem
+    &:checked + .policy__label
+      &::before
+        background: $primary url('../img/check.svg') no-repeat center / 0.8rem
   &__label
     display: flex
     align-items: center
+    font-size: 1.142rem
     &::before
       content: ''
       width: 18px
@@ -82,6 +87,14 @@ $secondary: #959595
       border-radius: 1px
       cursor: pointer
       margin-right: 0.64rem
+    &--center
+      justify-content: center
+div
+  &.invalid
+    color: tomato
+input
+  &.invalid
+    border-bottom: 1px solid tomato
 
 // grid
 .container
@@ -323,10 +336,6 @@ img
     justify-content: space-between
     max-width: 55rem
     margin: auto
-  &__input-group
-    display: flex
-    flex-direction: column
-    flex-basis: 30%
   &__policy
     flex-basis: 100%
     margin-top: 1rem
@@ -455,6 +464,51 @@ img
         background: url('../img/arrow-prev.svg') no-repeat center
       &-next
         background: url('../img/arrow-next.svg') no-repeat center
+
+// Footer
+.footer
+  background: $dark url('../img/footer-bg.jpg') no-repeat center
+  background-size: cover
+  padding-top: 3rem
+  &__wrap
+    max-width: 63.07rem
+    margin: auto
+    padding: 2.5rem
+    background: $black url('../img/bg-lines.svg') no-repeat center
+    background-size: cover
+    margin-bottom: 3.7rem
+  &__title
+    text-transform: uppercase
+    font-family: "Yeseva One", cursive
+    font-weight: normal
+    font-size: 1.43rem
+    text-align: center
+    margin-bottom: 3.2rem
+    margin-top: 0
+  &__form
+    display: flex
+    justify-content: space-between
+    flex-wrap: wrap
+    max-width: 37.142rem
+    margin: auto
+  &__input
+    padding-top: 0.3rem
+    &-group
+      flex-basis: 45%
+      margin-bottom: 2rem
+      &--full-width
+        flex-basis: 100%
+        margin-top: 1rem
+  &__policy
+    flex-basis: 100%
+    margin-bottom: 3.6rem
+  &__button
+    margin: auto
+    padding: 1.1rem 4.3rem
+    font-size: 1.1rem
+  &__menu
+    background-color: $black
+    padding: 3rem 0
 // Modal
 .modal
   opacity: 0
@@ -504,9 +558,10 @@ img
     display: flex
     flex-direction: column
   &__input
-    margin-bottom: 3.43rem
-    &:last-of-type
-      margin-bottom: 0
+    &-group
+      margin-bottom: 3.43rem
+      &:last-of-type
+        margin-bottom: 0
   &__policy
     margin-bottom: 2.7rem
   &__button
@@ -657,6 +712,30 @@ img
       &-slide
         &__heading
           font-size: 1.1rem
+  .footer
+    background-image: none
+    &__wrap
+      background-image: none
+      background-color: $dark
+      padding: 0
+      width: 100%
+    &__title
+      margin-bottom: 4rem
+    &__input
+      font-size: 1.1rem
+      border-bottom: 1px solid darken($light, 50%)
+      &-group
+        flex-basis: 100%
+        margin-bottom: 3rem
+        &--full-width
+          margin-top: 0
+    &__button
+      flex-basis: 100%
+    .policy
+      margin-top: -2rem
+      &__label
+        font-size: 1rem
+        justify-content: flex-start
 @media screen and ( max-width: 320px )
   .control
     &__video

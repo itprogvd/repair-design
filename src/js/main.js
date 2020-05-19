@@ -71,4 +71,75 @@ $(document).ready(function () {
 
   new WOW().init();
 
+  // validate form
+  $('.modal__form').validate({
+    errorElement: 'div',
+    errorClass: 'invalid',
+    rules: {
+      userName: {
+        required: true,
+        minlength: 2
+      },
+      userPhone: "required",
+      userEmail: {
+        required: true,
+        email: true
+      }
+    },
+    messages: {
+      userName: {
+        required: "Заполните поле",
+        minlength: "Имя не короче 2 букв"
+      },
+      userPhone: "Заполните поле",
+      userEmail: {
+        required: "Заполните поле",
+        email: "Введите корректный email"
+      }
+    }
+  });
+
+  $('.footer__form').validate({
+    errorElement: 'div',
+    errorClass: 'invalid',
+    rules: {
+      footerUserName: {
+        required: true,
+        minlength: 2
+      },
+      footerUserPhone: "required"
+    },
+    messages: {
+      footerUserName: {
+        required: "Заполните поле",
+        minlength: "Имя не короче 2 букв"
+      },
+      footerUserPhone: "Заполните поле",
+    }
+  });
+
+  $('.control__form').validate({
+    errorElement: 'div',
+    errorClass: 'invalid',
+    rules: {
+      controlUserName: {
+        required: true,
+        minlength: 2
+      },
+      controlUserPhone: "required"
+    },
+    messages: {
+      controlUserName: {
+        required: "Заполните поле",
+        minlength: "Имя не короче 2 букв"
+      },
+      controlUserPhone: "Заполните поле",
+    }
+  });
+
+  // mask for phone
+  $('[type=tel]').mask('+7(000) 000-00-00', {
+    placeholder: "+7 (___) __-__-___"
+  });
+
 });
