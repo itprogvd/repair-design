@@ -1,13 +1,13 @@
 <?php
 
 $userName = $_POST['userName'];
-$userPhone = $_POST['userPhone'];
-$userEmail = $_POST['userEmail'];
 $controlUserName = $_POST['controlUserName'];
-$controlUserPhone = $_POST['controlUserPhone'];
 $footerUserName = $_POST['footerUserName'];
+$userEmail = $_POST['userEmail'];
+$userPhone = $_POST['userPhone'];
+$controlUserPhone = $_POST['controlUserPhone'];
 $footerUserPhone = $_POST['footerUserPhone'];
-$userQuestion = $_POST['footerUserQuestion'];
+$footerUserQuestion = $_POST['footerUserQuestion'];
 
 // Load Composer's autoloader
 require 'phpmailer/PHPMailer.php';
@@ -35,13 +35,14 @@ try {
     // Content
     $mail->isHTML(true);                                  // Set email format to HTML
     $mail->Subject = 'Новая заявка с сайта';
-    $mail->Body    = "Имя пользователя: ${userName} или ${footerUserName} или ${controlUserName}<br>
-    Телефон пользователя: ${userPhone} или ${controlUserPhone} или ${footerUserPhone}<br>
-    Почта пользователя: ${userEmail}<br>
-    Вопрос пользователя: ${userQuestion}";
+    $mail->Body    = "Имя пользователя: ${userName} || ${controlUserName} || ${footerUserName}<br>Телефон пользователя: ${userPhone} || ${controlUserPhone} || ${footerUserPhone}<br>Почта пользователя: ${userEmail}<br>Вопрос пользователя: ${footerUserQuestion}";
 
-    $mail->send();
-    header('Location: thanks.html');
+    if($mail->send()) {
+        // header('Location: thanks.html');
+        echo 'ok';
+    } else {
+        echo "Письмо не отправлено, есть ошибка. Код ошибки: {$mail->ErrorInfo}";
+    }
 } catch (Exception $e) {
     echo "Письмо не отправлено, есть ошибка. Код ошибки: {$mail->ErrorInfo}";
 }

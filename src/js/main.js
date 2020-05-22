@@ -23,6 +23,7 @@ document.addEventListener('DOMContentLoaded', () => {
       switchModal();
     }
   });
+
 });
 
 $(document).ready(function () {
@@ -32,6 +33,8 @@ $(document).ready(function () {
 
   modalBtn.on('click', function () {
     modal.toggleClass('modal--visible');
+    $('.modal__form').css('display', 'flex');
+    $('.modal__title').text('Оставьте заявку и наш менеджер свяжется с вами');
   });
   closeBtn.on('click', function () {
     modal.toggleClass('modal--visible');
@@ -103,6 +106,19 @@ $(document).ready(function () {
         required: "Заполните поле",
         email: "Введите корректный email"
       }
+    },
+    submitHandler: function (form) {
+      $.ajax({
+        type: "POST",
+        url: 'send.php',
+        data: $(form).serialize(),
+        success: function (response) {
+          // alert('Спасибо за заявку, мы свяжемся с вами в течении 15 минут!');
+          $('.modal__form').css('display', 'none');
+          $('.modal__title').html('Форма отправлена. Подпишитесь на <a href="#" style="color: #fff">группу вк</a>');
+          $(form)[0].reset();
+        }
+      });
     }
   });
 
