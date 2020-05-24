@@ -466,6 +466,76 @@ img
     color: $dark
     &::before
       margin-bottom: 1.214rem
+
+// Clients section
+.clients
+  padding-bottom: 25rem
+  &-wrap
+    display: flex
+    align-items: flex-start
+    justify-content: space-between
+.client
+  flex-basis: 30%
+  position: relative
+  box-shadow: 0px 10px 50px rgba(0, 0, 0, 0.04)
+  padding: 2rem 2rem 0 2rem
+  min-height: 40rem
+  &__title
+    display: flex
+    align-items: center
+  &__name
+    color: $black
+    font-size: 1.3rem
+    line-height: 1.642rem
+    font-family: 'Yeseva One', cursive
+    font-weight: normal
+    margin-left: 1.642rem
+  &__text
+    color: $secondary
+    font-size: 1.07rem
+    line-height: 180%
+    margin-bottom: 6rem
+  &__info
+    position: absolute
+    left: 0
+    bottom: -2.5rem
+    background-color: $primary
+    display: flex
+    align-items: center
+    font-size: 1.214rem
+    color: $light
+    max-width: 20.92rem
+    font-family: 'Yeseva One', cursive
+    font-weight: normal
+    box-shadow: 5px 5px 20px rgba(227, 184, 115, 0.5)
+  &__meters
+    border-right: 0.75px solid #FFFFFF
+    padding: 1rem
+    text-transform: uppercase
+    display: flex
+    align-items: center
+    &::before
+      content: ''
+      width: 32px
+      height: 32px
+      display: block
+      background-image: url('../img/meters.svg')
+      margin-right: 1.5rem
+  &__days
+    padding-right: 0
+    padding: 1rem
+    display: flex
+    align-items: center
+    &::before
+      content: ''
+      width: 33px
+      height: 33px
+      display: block
+      background-image: url('../img/calendar.svg')
+      margin-right: 1.5rem
+  &__img
+    width: 76px
+    height: 77px
 // projects
 .projects
   padding-top: 11rem
@@ -539,6 +609,7 @@ img
   &__wrap
     max-width: 63.07rem
     margin: auto
+    margin-top: -17rem
     padding: 2.5rem
     background: $black url('../img/bg-lines.svg') no-repeat center
     background-size: cover
@@ -666,6 +737,9 @@ img
   .nav
     &__item
       margin-right: 1rem
+  .client
+    &__info
+      max-width: 30rem
 @media screen and ( max-width: 992px )
   .nav
     display: none
@@ -691,6 +765,22 @@ img
       flex-wrap: wrap
     &__block:not(:last-child)
       margin-bottom: 5rem
+  .clients-wrap
+    flex-wrap: wrap
+  .client
+    flex-basis: 100%
+    max-width: 35rem
+    margin: auto
+    margin-bottom: 5rem
+    min-height: auto
+    &__info
+      max-width: 25rem
+    &__meters, &__days
+      padding: 1rem
+    &__meters::before, &__days::before
+      margin-right: 0.5rem
+      width: 26px
+      height: 23px
 
 @media screen and ( max-width: 760px )
   .row
@@ -811,7 +901,7 @@ img
           font-size: 1.1rem
   .footer
     background-image: none
-    padding-top: 0
+    padding-top: 16rem
     &__wrap
       background-image: none
       background-color: $dark
@@ -855,6 +945,8 @@ img
         left: -10px
     &__text
       display: none
+  .clients
+    display: none
 @media screen and ( max-width: 320px )
   .control
     &__video
