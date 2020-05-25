@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 
 <head>
   <meta charset="UTF-8">
@@ -12,9 +12,6 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css" />
   <link rel="stylesheet" href="css/normalize.css">
   <link rel="stylesheet" href="css/style.min.css">
-  <script src="https://api-maps.yandex.ru/2.1/?apikey=bc90d9f0-0461-4f37-a395-d1a1042e2593&lang=ru_RU"
-    type="text/javascript">
-  </script>
 </head>
 
 
@@ -203,8 +200,8 @@
           </div>
           <button class="button button--primary control__button">Отправить</button>
           <div class="policy control__policy">
-            <input type="checkbox" name="policy-checkbox" id="control__policy-checkbox" class="policy__checkbox"
-              checked>
+            <input type="checkbox" name="policy-checkbox" id="control__policy-checkbox" class="policy__checkbox" checked
+              required>
             <label for="control__policy-checkbox" class="policy__label control__policy__label">Я соглашаюсь с обработкой
               данных</label>
           </div>
@@ -503,7 +500,8 @@
               id="footer__user-question" placeholder="Я хочу спросить:">
           </div>
           <div class="policy footer__policy">
-            <input type="checkbox" name="policy-checkbox" id="footer__policy-checkbox" class="policy__checkbox" checked>
+            <input type="checkbox" name="policy-checkbox" id="footer__policy-checkbox" class="policy__checkbox" checked
+              required>
             <label for="footer__policy-checkbox" class="policy__label policy__label--center">Я соглашаюсь с обработкой
               данных</label>
           </div>
@@ -523,9 +521,12 @@
           </div>
         </div>
         <div class="map footer__map" id="map">
-          <!-- <script type="text/javascript" charset="utf-8" async
-            src="https://api-maps.yandex.ru/services/constructor/1.0/js/?um=constructor%3Ad4624d474cf2bd3f287eed411a4718819b589db9ccebb96101ea38007195b034&amp;width=100%25&amp;height=465&amp;lang=ru_UA&amp;scroll=false">
+          <!-- <script charset="utf-8" async src="https://api-maps.yandex.ru/services/constructor/1.0/js/?um=constructor%3Ad4624d474cf2bd3f287eed411a4718819b589db9ccebb96101ea38007195b034&amp;width=100%25&amp;height=465&amp;lang=ru_UA&amp;scroll=false">
           </script> -->
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2708.5551262319163!2d39.720990815518725!3d47.24484722089064!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40e3b9b47a7e7029%3A0x9e8cb546a10601cc!2z0KLQpiAi0JTQtdC60L7RgNGD0Lwi!5e0!3m2!1sru!2sua!4v1590442211028!5m2!1sru!2sua"
+            width="100%" height="465" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false"
+            tabindex="0"></iframe>
         </div>
       </div>
     </div>
@@ -571,7 +572,8 @@
             id="modal__user-email" placeholder="Ваш email:">
         </div>
         <div class="policy modal__policy">
-          <input type="checkbox" name="policy-checkbox" id="modal__policy-checkbox" class="policy__checkbox" checked>
+          <input type="checkbox" name="policyСheckbox" id="modal__policy-checkbox" class="policy__checkbox" checked
+            required>
           <label for="modal__policy-checkbox" class="policy__label">Я соглашаюсь с обработкой данных</label>
         </div>
         <button class="button button--primary modal__button">Отправить заявку</button>
