@@ -72,7 +72,7 @@ $black: #181818
   &__checkbox
     opacity: 0
     visibility: hidden
-    &:checked + .policy__label
+    &:checked ~ .policy__label
       &::before
         background: $primary url('../img/check.svg') no-repeat center / 0.8rem
   &__label
@@ -104,6 +104,12 @@ div
 input
   &.invalid
     border-bottom: 1px solid tomato
+#footerPolicyCheckbox-error, #controlPolicyCheckbox-error, #modalPolicyСheckbox-error
+  margin-top: 1rem
+  order: 4
+  text-align: center
+#modalPolicyСheckbox-error
+  text-align: left
 
 // grid
 .container
@@ -122,6 +128,7 @@ input
   // basic
 *, *:before, *:after
   box-sizing: border-box
+  outline: none
 html
   font-size: 14px
 body
@@ -193,9 +200,11 @@ img
   justify-content: space-between
   align-items: center
 .logo
-  color: $primary
   text-transform: uppercase
   font-size: 1.075rem
+  &__link
+    color: $primary
+    text-decoration: none
 .nav
   &__item
     color: $light
@@ -342,6 +351,8 @@ img
   &__policy
     flex-basis: 100%
     margin-top: 1rem
+    display: flex
+    flex-direction: column
     &__label
       justify-content: center
   &__label
@@ -352,6 +363,7 @@ img
   &__play
     position: relative
     margin: auto
+    cursor: pointer
 //section "Types"
 .types
   &__section-title
@@ -640,6 +652,8 @@ img
   &__policy
     flex-basis: 100%
     margin-bottom: 3.6rem
+    display: flex
+    flex-direction: column
   &__button
     margin: auto
     padding: 1.1rem 4.3rem
@@ -728,6 +742,8 @@ img
         margin-bottom: 0
   &__policy
     margin-bottom: 2.7rem
+    display: flex
+    flex-direction: column
   &__button
     align-self: flex-end
     padding: 1.2rem 3.4rem
@@ -821,6 +837,8 @@ img
   .projects
     .row
       flex-direction: row
+  .control
+    padding-bottom: 0
 @media screen and ( max-width: 576px )
   .title
     font-size: 1.64rem

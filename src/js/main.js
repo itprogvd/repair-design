@@ -56,6 +56,26 @@ $(document).ready(function () {
         return false;
       });
     });
+    $(function () {
+      document.querySelectorAll('.nav__item').forEach((item) => {
+        $(item).click(function () {
+          let elementClick = $(item).attr("href");
+          let destination = $(elementClick).offset().top;
+          $('html, body').animate({
+            scrollTop: destination
+          }, 500);
+          return false;
+        });
+      });
+      $('.send-link').click(function () {
+        let elementClick = $(this).attr("href");
+        let destination = $(elementClick).offset().top;
+        $('html, body').animate({
+          scrollTop: destination
+        }, 500);
+        return false;
+      });
+    });
   })(jQuery);
 
   //initialize swiper when document ready
@@ -91,6 +111,7 @@ $(document).ready(function () {
         minlength: 2
       },
       userPhone: "required",
+      modalPolicyСheckbox: "required",
       userEmail: {
         required: true,
         email: true
@@ -102,6 +123,7 @@ $(document).ready(function () {
         minlength: "Имя не короче 2 букв"
       },
       userPhone: "Заполните поле",
+      modalPolicyСheckbox: "Согласитесь с обработкой данных",
       userEmail: {
         required: "Заполните поле",
         email: "Введите корректный email"
@@ -117,6 +139,8 @@ $(document).ready(function () {
           $('.modal__form').css('display', 'none');
           $('.modal__title').html('Форма отправлена. Подпишитесь на <a href="#" style="color: #fff">группу вк</a>');
           $(form)[0].reset();
+          ym(64370731, 'reachGoal', 'callback');
+          return true;
         }
       });
     }
@@ -130,7 +154,8 @@ $(document).ready(function () {
         required: true,
         minlength: 2
       },
-      footerUserPhone: "required"
+      footerUserPhone: "required",
+      footerPolicyCheckbox: "required"
     },
     messages: {
       footerUserName: {
@@ -138,6 +163,21 @@ $(document).ready(function () {
         minlength: "Имя не короче 2 букв"
       },
       footerUserPhone: "Заполните поле",
+      footerPolicyCheckbox: "Согласитесь с обработкой данных"
+    },
+    submitHandler: function (form) {
+      $.ajax({
+        type: "POST",
+        url: 'send.php',
+        data: $(form).serialize(),
+        success: function (response) {
+          // alert('Спасибо за заявку, мы свяжемся с вами в течении 15 минут!');
+          $('.modal').addClass('modal--visible');
+          $('.modal__form').css('display', 'none');
+          $('.modal__title').html('Вопрос отправлен. Подпишитесь на <a href="#" style="color: #fff">группу вк</a>');
+          $(form)[0].reset();
+        }
+      });
     }
   });
 
@@ -149,7 +189,8 @@ $(document).ready(function () {
         required: true,
         minlength: 2
       },
-      controlUserPhone: "required"
+      controlUserPhone: "required",
+      controlPolicyCheckbox: "required"
     },
     messages: {
       controlUserName: {
@@ -157,6 +198,23 @@ $(document).ready(function () {
         minlength: "Имя не короче 2 букв"
       },
       controlUserPhone: "Заполните поле",
+      controlPolicyCheckbox: "Согласитесь с обработкой данных"
+    },
+    submitHandler: function (form) {
+      $.ajax({
+        type: "POST",
+        url: 'send.php',
+        data: $(form).serialize(),
+        success: function (response) {
+          // alert('Спасибо за заявку, мы свяжемся с вами в течении 15 минут!');
+          $('.modal').addClass('modal--visible');
+          $('.modal__form').css('display', 'none');
+          $('.modal__title').html('Заявка отправлена. Подпишитесь на <a href="#" style="color: #fff">группу вк</a>');
+          $(form)[0].reset();
+          ym(64370731, 'reachGoal', 'requisition');
+          return true;
+        }
+      });
     }
   });
 
@@ -200,4 +258,20 @@ $(document).ready(function () {
 
   //   myMap.geoObjects.add(myPlacemark);
   // });
+
+  let player;
+  $('.video__play').on('click', function () {
+    player = new YT.Player('player', {
+      height: '465',
+      width: '100%',
+      videoId: 'RHzzLqJWqHs',
+      events: {
+        'onReady': videoPlay
+      }
+    });
+  });
+
+  function videoPlay(event) {
+    event.target.playVideo();
+  }
 });
