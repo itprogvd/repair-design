@@ -105,11 +105,25 @@ input
   &.invalid
     border-bottom: 1px solid tomato
 #footerPolicyCheckbox-error, #controlPolicyCheckbox-error, #modalPolicyСheckbox-error
-  margin-top: 1rem
+  margin-top: 0.5rem
   order: 4
   text-align: center
 #modalPolicyСheckbox-error
   text-align: left
+@keyframes
+  rotation
+  from
+    transform: rotate(0)
+  to
+    transform: rotate(359deg)
+    opacity: 1
+
+@keyframes
+  blink
+  from
+    opacity: .5
+  to
+    opacity: 1
 
 // grid
 .container
@@ -245,6 +259,7 @@ img
     margin-left: 4.28rem
   &__title
     margin-bottom: 1rem
+    font-weight: normal
   &__text
     font-size: 1.57rem
     max-width: 504px
@@ -470,6 +485,10 @@ img
       padding: 1rem 1.642rem
       font-weight: normal
       text-transform: uppercase
+    &__image
+      width: 304px
+  .image-wrap
+    overflow: hidden
   &__text
     max-width: 40.57rem
     margin: auto
@@ -661,11 +680,6 @@ img
   &__menu
     background-color: $black
     padding: 3rem 0
-  &__map
-    max-width: 66.07rem
-    margin: auto
-    margin-bottom: 4rem
-    min-height: 33.21rem
   &__contacts
     text-align: center
     margin-bottom: 3.714rem
@@ -687,6 +701,62 @@ img
   &__social
     &-link
       margin-right: 1.07rem
+      text-decoration: none
+    &-img
+      transition: all 0.2s ease-in
+      border-radius: 50%
+      &:hover
+        box-shadow: 0px 5px 20px rgba(227, 184, 115, 0.5)
+  &__map
+    position: relative
+    margin: auto
+    margin-bottom: 4rem
+    overflow: hidden
+    cursor: pointer
+    background: url('../img/yandex-before-load-marker.png') #ffffff no-repeat
+    background-position: center center
+    background-size: cover
+    box-shadow: 0 0 2em  0 rgba(0,0,0,.2)
+    max-width: 925px
+  #map-yandex
+    position: relative
+    z-index: 7
+    width: 100%
+    height: 465px
+    cursor: pointer
+    background-color: transparent
+  .loader
+    position: absolute
+    z-index: 15
+    top: -100%
+    left: 0
+    box-sizing: border-box
+    width: 100%
+    height: 100%
+    overflow: hidden
+    color: #000000
+    transition: opacity .7s ease
+    opacity: 0
+    background-color: rgba(0,0,0,.55)
+.loader:after,
+.loader:before
+  box-sizing: border-box
+.loader
+  &.is-active
+    top: 0
+    opacity: 1
+.loader-default
+  &:after
+    position: absolute
+    top: calc(50% - 24px)
+    left: calc(50% - 24px)
+    width: 48px
+    height: 48px
+    content: ''
+    animation: rotation 1s linear infinite
+    border: solid 8px #ffffff
+    border-left-color: transparent
+    border-radius: 50%
 // Modal
 .modal
   opacity: 0
@@ -850,6 +920,8 @@ img
     &__button
       display: none
   .hero
+    height: 100%
+    margin-top: 3rem
     &__scroll-down
       display: none
     &__content
@@ -947,8 +1019,8 @@ img
       display: flex
       flex-direction: column
     &__map
-      max-width: 100%
       margin: 0 0 2rem 0
+      height: 255px
     &__contacts
       order: 4
     &__menu
@@ -959,18 +1031,15 @@ img
     color: $light
     padding-top: 0.1rem
     &__block
-      &::before
-        top: -35px
-        left: -10px
+      margin-left: 2rem
+      margin-right: -0.5rem
     &__text
       display: none
   .clients
     display: none
 @media screen and ( max-width: 320px )
-  .control
-    &__video
-      min-height: 12rem
-
+  .control__video, .video-stream
+    height: 207px
 @media screen and ( max-height: 520px )
   .hero
     &__scroll-down
